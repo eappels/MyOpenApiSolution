@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyOpenApiMauiClient.Views.MovieListView"
+             Title="MovieListView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <CollectionView x:Name="MoviesCollectionView"
+                        Grid.Row="0"
+                        ItemsSource="{Binding MovieList}"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                               Text="{Binding Id}" />
+                        <Label Grid.Row="1"
+                               Text="{Binding Title}"
+                               FontSize="Title" />
+                        <Label Grid.Row="2"
+                               Text="{Binding Genre}" />
+                        <Label Grid.Row="3"
+                               Text="{Binding ReleaseDate}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Row="1"
+                Text="Get movielist"
+                Command="{Binding GetMovieListCommand}" />
+    </Grid>
+</ContentPage>
